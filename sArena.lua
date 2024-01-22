@@ -299,20 +299,29 @@ function sArenaFrameMixin:OnLoad()
     self.CastBar:SetUnit(unit, false, true)
 
     self.healthbar = self.HealthBar
-
+    healthtexture =   self.healthbar:GetStatusBarTexture();
     self.myHealPredictionBar:ClearAllPoints()
     self.otherHealPredictionBar:ClearAllPoints()
-    -- self.totalAbsorbBar:ClearAllPoints()
     self.overAbsorbGlow:ClearAllPoints()
-    -- self.healAbsorbBar:ClearAllPoints()
-    -- self.healAbsorbBar = _G["healAbsorbBar"];
-    -- self.healAbsorbBar:SetStatusBar(self.healthbar);
-    -- self.healAbsorbBar:ClearAllPoints()
     self.overHealAbsorbGlow:ClearAllPoints()
-	-- self.totalAbsorbBar = _G["totalAbsorbBar"];
-    -- self.totalAbsorbBar:ClearAllPoints()
+    local prefix = "sArenaEnemyFrameTemplate"..self:GetID();
+	self.totalAbsorbBar = _G[prefix.."TotalAbsorbBar"]
+    UnitFrame_Initialize(self, unit,  nil, nil, nil,
+        self.healthbar,
+        nil,
+        nil,
+        nil,
+        nil, nil, nil,
+        nil,
+        nil,
+        self.totalAbsorbBar,
+        self.overAbsorbGlow,
+        self.overHealAbsorbGlow,
+        nil);
+    -- self.totalAbsorbBar.SetSize(100,100)
 	-- self.totalAbsorbBar:SetStatusBar(self.healthbar);
     -- self.totalAbsorbBar:Hide()
+    self.healthbar.overlay = self.totalAbsorbBar
     -- self.totalAbsorbBar.overlay = self.totalAbsorbBarOverlay
     -- self.totalAbsorbBarOverlay:SetAllPoints(self.totalAbsorbBar)
     -- self.totalAbsorbBarOverlay.tileSize = 32
@@ -824,7 +833,7 @@ function sArenaMixin:Test()
     for i = 1, 3 do
         local frame = self["arena" .. i]
         frame:Show()
-
+        
         frame.HealthBar:SetMinMaxValues(0, 100)
         frame.HealthBar:SetValue(100)
 

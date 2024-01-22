@@ -199,11 +199,11 @@
             <!-- <Frame name="myHealPredictionBar" inherits="DeprecatedArenaBarSegmentTemplate, MyHealPredictionBarTemplate"/> -->
             <!-- <Frame name="otherHealPredictionBar" inherits="DeprecatedArenaBarSegmentTemplate, OtherHealPredictionBarTemplate"/> -->
             <!-- <Frame name="healAbsorbBar" inherits="DeprecatedArenaBarSegmentTemplate, HealAbsorbBarTemplate"/> -->
-            <!-- <Frame name="totalAbsorbBar" inherits="TotalAbsorbBarTemplate">
+            <Frame name="$parentTotalAbsorbBar" inherits="TotalAbsorbBarTemplate">
                 <KeyValues>
                     <KeyValue key="fillTexture" value="Interface\RaidFrame\Shield-Fill" type="string"/>
                 </KeyValues>
-            </Frame> -->
+            </Frame>
             <Frame parentKey="SpecIcon" enablemouse="true" movable="true">
                 <Layers>
                     <Layer level="ARTWORK" textureSubLevel="2">
